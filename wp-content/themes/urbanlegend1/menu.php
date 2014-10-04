@@ -1,0 +1,1 @@
+<ul id="mainmenu"><?php wp_list_pages('title_li=' ); ?></ul>

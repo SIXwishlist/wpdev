@@ -1,0 +1,17 @@
+/*
+Theme Name: Dbo 2012 Child
+Theme URI: http://fthrwght.com/autofocus
+Description: AutoFocus+ Pro is a clean and simple WordPress child theme developed for photographers looking to showcase their work.
+Author: Duncan O'Neill
+Author URI: http://urbanlegendweb.co.nz/
+License:
+License URI:
+Template: twentytwelve
+Version: 1.0
+*/
+
+@import url("../twentytwelve/style.css");
+
+.site-info {width:20%;clear:none;}
+#credits {width:70%;text-align:right;}
+

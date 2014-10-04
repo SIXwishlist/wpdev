@@ -1,0 +1,25 @@
+NEW NOTES ON WORDPRESS
+==========================
+The Editor
+---------------
+Not Using FCKeditor:
+	The editor styles are determined by the file /wp-includes/js/tinymce/wordpress.css
+
+Using FCKeditor:
+	The editor styles are set in the file /wp-content/plugins/fckeditor-for-wordpress-plugin/custom_config_js.php
+	This file is the only one which needs to be changed in the FCKeditor plugin.This points to two files, 
+	with this line;
+
+		FCKConfig.EditorAreaCSS=["<?php echo bloginfo('stylesheet_url');?>","<?php echo bloginfo('url')."/editor_bg_override.css";?>"];
+
+	That calls the blogs stylesheet, and an over-write file in the root folder of the web installation.
+
+	Note also that the toolbar styles MAY be affected by those two stylesheets, which in turn must be 
+	over-ridden with the declaration setting the toolbar combo styles back to their default;
+
+		FCKConfig.ToolbarComboPreviewCSS = 'css/fck_editorarea.css' ;
+
+PAGES
+-----------
+blog page = index.php
+

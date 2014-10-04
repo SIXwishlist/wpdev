@@ -1,0 +1,15 @@
+body {
+	text-align:left;
+	background-color:#000;
+	color:#ccc;
+	padding:15px;
+}
+
+h1 {
+	color:white;
+	background:#4788C0;
+}
+
+body * {
+	line-height:1.4;
+}

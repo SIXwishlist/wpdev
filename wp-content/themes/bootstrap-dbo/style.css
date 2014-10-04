@@ -1,0 +1,450 @@
+/*
+Theme Name: Dbo Bootstrap Child
+Theme URI: http://urbanlegendweb.co.nz/
+Description: A child theme of the bootstrap
+Author: Duncan O'Neill
+Author URI: http://urbanlegendweb.co.nz/
+License:
+License URI:
+Template: the-bootstrap
+Version: 2.0.3
+*/
+
+/*@import url("../the-bootstrap/style.css"); DONT NEED TO DO THIS THEME HAS DONE IT */
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=latin,latin-ext);
+/*@import url(http://fonts.googleapis.com/css?family=Patrick+Hand+SC&subset=latin,latin-ext);*//* headings */
+@import url('fonts/stylesheet.css'); /* Agency FB */
+/*
+@import url(http://fonts.googleapis.com/css?family=Bangers);
+@import url(http://fonts.googleapis.com/css?family=Allan:400,700);
+@import url(http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700);
+@import url(http://fonts.googleapis.com/css?family=Autour+One);
+@import url(http://fonts.googleapis.com/css?family=Sofadi+One);
+@import url(http://fonts.googleapis.com/css?family=Cherry+Swash:400,700);
+@import url(http://fonts.googleapis.com/css?family=Lemon);
+*/
+/* fonts to try - Myriad Pro */
+
+body {font-family:'Noto Sans',sans-serif;color:#333;margin:0;padding:0;}
+.wide-header.custom-background { background:#fff; }
+
+/* padding margins at top level 
+-------------------------------------  */
+body > .container {margin:0 auto;padding:0;}
+body #page {padding:0 0;background:none;margin-top:0;margin-bottom:0;}
+
+/* backgrounds  */
+body {background:#fff url('img/manaia-1800-4.png') no-repeat 0 0;}
+.wide-header #page {}
+.wide-header #primary,
+.wide-header #maincontent {background:white;}
+.wide-header #colophon { background:#036;/*#03225D*/}
+
+
+#branding {float:none;}
+#branding hgroup {margin-bottom:30px;}
+
+/* main headings for screen sizes above 980px 
+------------------------------- */
+#site-title {font-size:300%/* 290% */;line-height:1.2;text-shadow:0 1px 1px #c00;margin:0;}
+#site-title a {color:white;}
+#site-description {font-size:210%;/* 230% */text-indent:510px;text-shadow:0 1px 1px #ffc;}
+
+.entry-title {text-shadow:0 1px 1px #036;}
+
+h1,h2,h3,h4 {font-family:'AgencyFBBOld','hirukoblack_alternate','Patrick Hand SC','Allan','Bangers',serif;font-weight:600;line-height:1}
+
+#primary .page-title /* archive page headers etc */{
+	font-size:225%;
+}
+
+#primary article .entry-title {
+	font-size:180%;}
+
+#primary .widgettitle,#maincontent .widgettitle {
+	font-size:170%;
+}
+
+#secondary .widget-title {
+	font-size:150%;
+}
+
+#colophon .widgettitle  {
+	font-size:150%;
+}
+
+.top-spiel h2 {
+	font-size:200%;
+}
+
+/* colors 
+------------------------------------  */
+/*orange */
+#colophon .widgettitle,
+.top-spiel h2,
+.home .widgettitle {color:/*#f1a805*/#F57803;/*#E99800;*/
+text-shadow:1px 1px 0 #ccc;
+}
+/*blue */
+a, #branding #site-description {color:#036;/* 08c / 04c */}
+
+
+/* navbar
+------------------------------  */
+.navbar {margin-bottom:0;}
+.wide-header .navbar-inner {border-radius:0;border-width:1px 0 0 0;}
+.navbar-inverse .nav .active > a, 
+.navbar-inverse .nav .active > a:hover, 
+.navbar-inverse .nav .active > a:focus,
+.navbar-inverse .nav .current_page_parent > a {
+    background-color: #fff;
+    color: #036;
+	border-radius:5px 5px 0 0;
+}
+
+.navbar-inverse .brand, .navbar-inverse .nav > li > a {
+	font-family:'Noto Sans',sans-serif;
+	font-weight:bold;
+	transition:padding 0.5s ease;
+}
+
+.navbar-inverse .nav > li > a:active {
+	padding:15px 15px 5px;
+}
+
+.navbar-search .search-query {
+	border-radius:5px 5px 5px 5px
+}
+
+/* home page
+----------------------------    */
+.home #site-title {}
+.top-spiel {padding-top:1.5em;padding-bottom:1em;font-weight:bold;}
+.top-spiel h2 {display:inline;}
+.top-spiel .btn {margin-bottom:10px;margin-left:10px;}
+#secondary .tab-content { overflow:visible;}
+.three-pods {/* three-wide content divs on home */}
+.final-pitch {overflow:hidden;}
+
+/* General
+-------------------------------  */
+#content article.page { margin-bottom:15px;}
+#content article.post { margin-bottom:25px;}
+.entry-meta, figcaption {font-size:smaller;}
+.well {opacity:1;}
+#secondary .well:first-child {border-radius:0 0 5px 5px;}
+.small {font-size:smaller;}
+
+
+
+/* contact-form */
+span.wpcf7-not-valid-tip {
+	left:10%;
+	top:100%;
+	width:85%;
+	border:2px solid #F57803;
+}
+
+div.wpcf7-validation-errors {
+    border: 2px solid #F00;
+}
+
+
+
+
+/* CAROUSEL 
+============================================ */
+
+.carousel {
+		background:white;/*opacity:0.65*/;color:#000;
+		border-radius:5px;border:5px solid #d9d9d9;
+		padding:10px;
+		overflow:hidden;line-height:inherit;height:340px;
+}
+
+.wide-header .carousel {
+		background:#f1f1f1;
+}
+
+.carousel-indicators {
+    list-style: none outside none;
+    margin: 0;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    z-index: 5;
+}
+
+.carousel-indicators li {
+    /*background-color: rgba(255, 255, 255, 0.25);*/
+	background-color:#999;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+    float: left;
+    height: 10px;
+    margin-left: 5px;
+    text-indent: -999px;
+    width: 10px;
+}
+
+.carousel-indicators li:hover {
+	cursor:pointer;
+}
+
+
+.carousel-indicators .active {
+    background-color: #036;
+}
+
+
+/* carousel items 
+------------------------------- */
+
+.carousel-inner > .item {
+    margin:0px 0px;
+}
+
+.carousel-inner > .item img {
+	display:block;	
+	max-width:98%;
+
+}
+
+.carousel-inner .feature-text {width:250px;}
+.carousel-inner > .item .feature-text {font-size:small;}
+
+.carousel-control {top:120px;left:auto;right:15px;}
+.carousel-control.right {top:180px;}
+
+/* accordions 
+---------------------------  */
+.accordion-group {border-width:1px 0;}
+.accordion-heading .accordion-toggle {
+	padding:0 0;
+}
+
+.page-template-portfolio-php .accordion-heading .accordion-toggle {
+	padding:10px 0;
+}
+.collapse.entry-content {margin-bottom:0;}
+.accordion-group article .page-header {margin:20px 0 5px;}
+#content .accordion-group article {margin-bottom:35px;}
+
+/* footer 
+---------------------------- */
+.wide-header #page #colophon {
+		margin:0;padding:0;width:100%;float:none;
+		font-size:small;
+}
+
+#colophon .well {border-radius:0;}
+
+#colophon nav > ul, #colophon #footer-middle {
+	padding-top:20px;
+}
+
+#page-footer { margin-bottom:0; }
+#colophon pre {font-family:inherit;padding:5px;margin:0:}
+
+/* portfolio + fancybox 
+------------------------------------  */
+a.fancybox img.attachment-thumbnail {float:left;margin-right:10px;}
+.fancybox-skin {background:/*#E6ECED;*/#036;}
+h3.iframe-header {line-height:2;text-align:center;padding:0;margin:0 0 10px 0;font-size:190%;color:black;background:#e6eced;border-bottom:1px solid #036;}
+.iframe-content {margin:0;text-align:center;padding:0;}
+.iframe-content a,
+.iframe-content a img {border:0;}
+
+/* quote page 
+---------------------------------------   */
+.page-template-quote-php.wide-header #page #branding {
+	background-image:none;
+}
+
+.page-template-quote-php.wide-header #access ul,
+page-template-quote-php.wide-header #access a {display:none;}
+
+.page-template-quote-php.wide-header #primary, 
+.page-template-quote-php.wide-header #maincontent {
+	opacity:1;
+}
+
+/* button fancyboxes */
+a.mobile {display:none;}
+
+
+/* RESPONSIVE
+===================================   */
+
+/* Large desktop */
+@media (min-width: 1200px) {  
+	.wide-header #page #branding {
+	}
+}
+
+/* standard desktop */
+@media (max-width: 1199px) {
+	.carousel-inner > .item img {
+				
+	}
+}
+
+@media (min-width:980px) {
+	/* center header text and menu */
+	.wide-header #branding hgroup, 
+	.wide-header #branding .navbar-inner .container,
+	.wide-header #colophon #page-footer {
+		width:940px;margin-left:auto;margin-right:auto;
+	}
+
+	.wide-header .navbar .nav > li:first-child > a  {
+		/*padding:10px 15px 10px 0;*/
+	}
+
+	#site-title {text-align:center;}
+
+	#menu-main.nav {margin:0 0 0 -8px;}
+
+	.wide-header #page > #primary, /* relevant line for wide screen */
+	.wide-header #page #maincontent,
+	.wide-header #colophon #page-footer {
+		margin-left:auto;margin-right:auto;float:none;
+		padding:0 0.5% 30px;
+	}
+
+	.wide-header .carousel-inner p {
+		text-shadow:0.5px 0.5px 1px #036;
+	}
+
+	.wide-header #page #branding {
+		background:/*#f1a805*/#F57803 url('img/manaia-1024-d.png') no-repeat 46% -10px;
+	}
+	
+}
+
+@media (max-width:979px){
+	.carousel-inner > .item img {
+		width:100%;
+		height:auto;
+		}
+	.wide-header > .container {
+		padding:0;
+	}
+
+	#site-title {font-size:250%;line-height:1.2}
+	#site-description {font-size:200%;text-indent:47%;}
+
+	a.mobile {display:inline-block;}
+	a.fancylink {display:none;}
+}
+
+    
+@media (min-width: 768px ){
+	.wide-header > .container {
+		width:100%;
+		margin:0;
+	}
+
+	.wide-header #page {
+		margin-left:auto;margin-right:auto;
+		background:#036 url('img/wallpapers-undersea.jpg') no-repeat 0 0 fixed;
+		background-size:100% 100%;
+	}
+	
+	.wide-header {
+		background:none;
+	}
+	
+	.wide-header #page #branding,
+	.wide-header #page #colophon {
+		width:100%;
+		margin:0;
+	}
+
+	.wide-header #primary, .wide-header #maincontent,
+	.wide-header #colophon {
+		opacity:0.8;
+	}
+	
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {  
+	.wide-header #page #branding {	
+		background:/*#f1a805*/#F57803 url('img/manaia-1024-d.png') no-repeat 110% -20px;
+	}
+
+	.wide-header #branding hgroup, 
+	.wide-header #branding .navbar-inner .container,
+	.wide-header #colophon #page-footer {
+		width:724px;margin-left:auto;margin-right:auto;
+		padding:0;
+	}
+
+	/* give the main content container & footer the same padding */
+	.wide-header #page > #primary,
+	.wide-header #page #maincontent,
+	.wide-header #colophon #page-footer  {
+		margin-left:auto;margin-right:auto;float:none;
+		padding:0 1%;
+	}
+	
+}
+     
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) { 
+	.wide-header #page #branding {
+		background:/*#f1a805*/#F57803;
+	}
+
+	/* gutter for main content small screen */
+	.wide-header #primary {
+		width:98%;
+		margin:0 auto;
+		padding:0 1%;
+	}
+
+	#site-title {margin-left:2%;text-indent:0;}
+	#site-description {margin-left:4%;text-indent:0;}
+
+	.wide-header #page {background:white;}
+	
+	.carousel-control {display:none;}
+	.carousel {
+		height:auto;
+	}
+}
+     
+/* Landscape phones and down */
+@media (max-width: 480px) {  
+	
+	#site-title {font-size:150%;}
+	#site-description {font-size:120%;}
+	.top-spiel h2, .top-spiel p {font-size:100%;}
+}
+
+/* wide wallapaper for lt-ie9 large screens */
+@media (min-width:1200px){
+.lt-ie9 .wide-header #page {
+		background:#036 url('img/wallpapers-undersea-1900.jpg') repeat-x 0 0 fixed;
+	}
+}
+
+#content article p {
+	color:#000;
+	
+}
+
+  /* Raised shadow - no pseudo-elements needed */
+.raised {
+            -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+               -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+                    box-shadow: 0 -15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+/* alter carousel border etc to suit */
+.carousel { border:none;}
+.accordion-heading {text-shadow:0 1px 1px #036;}
+@media (max-width: 599px) {
+	#myCarousel {display:none;}
+}

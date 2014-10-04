@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Palette Picker</title>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<meta name="description" content="Choose a color palette for web pages - a javascript application" />
+<meta name="keywords" content="color, palette, color palette, javascript, web authors, web pages, color schemes, web page colors, 216 colors" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="MSSmartTagsPreventParsing" content="TRUE" /> 
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<script language="Javascript" type="text/javascript">
+<!--
+
+//var currentColor;
+var daDivs;
+var div1,div2,div3,div4,div5;
+var c = new Array('0','3','6','9','c','f');
+var dark_colors = new Array('000','003','006','009','030','033','036','039','03c','300','303','306','330','333','336','339','309','30c','630','633','636','639','603','600','603','606','609','60c','63c');
+
+
+function makeTables(){
+//  directs the drawing of the six tables
+for (i=0;i<6;i++){drawTable(c[i]);
+                  } // draw table used startnum
+}
+
+function drawTable(){
+//  draws the palette on the left hand side of the page
+docbody = document.getElementsByTagName("body").item(0);
+myTable = document.createElement("table");
+myTable.id = 'colorTable';
+myTable.width = '20%';
+myTable.cellSpacing = 1;
+myTable.cellPadding = 1;
+myTableBody = document.createElement("tbody");
+for (var i=0;i<6;i++){
+                  
+for (var j=0;j<6;j++){
+                 row = document.createElement("tr");
+				 
+                 for (var k=0;k<6;k++){
+				                  hew = c[i] + c[j] +   c[k];
+				                  cell= document.createElement("td");
+								  cell.id = 'c' + hew;
+								  cell.align = 'center';
+								  cell.bgColor = '#' + c[i] + c[i]  + c[j] + c[j] + c[k] + c[k];
+								  the_link = document.createElement("a");
+	                              the_link.href="javascript:void(currentColor = \"" + hew + "\");";
+								  the_link.innerHTML =  hew;
+								  cell.appendChild(the_link);
+								  row.appendChild(cell);
+								  
+								  }
+				 myTableBody.appendChild(row);
+				 hew='';
+				 }
+				 
+				 }
+myTable.appendChild(myTableBody);
+docbody.appendChild(myTable);
+}
+         
+
+function getObj(name)
+
+{
+    if (document.getElementById)
+
+	{
+       return document.getElementById(name);
+    }
+
+	else if (document.all)
+
+	{
+     return document.all[name].style;
+    }
+
+	else if (document.layers)
+
+	{
+    return document.layers[name];
+
+	}
+}
+
+function getDivs(){
+//  gets references to the divs being changed
+     div1 = getObj('mockpage');
+     div2 = getObj('headdiv');
+     div3 = getObj('linkdiv');
+     div4 = getObj('textdiv');
+     div5 = getObj('footerdiv');
+
+     daDivs = new Array(div1,div2,div3,div4,div5);
+}
+
+function changeColor(whichdiv){ 
+//  director function for color changes        
+         daDivs[whichdiv].style.backgroundColor = '#' + currentColor;
+		 useContrast(currentColor,whichdiv);
+		 writeColorNames(whichdiv);
+		 changeCell(currentColor,whichdiv);
+		 createCookie(whichdiv,currentColor,3);
+		 
+}
+
+
+function writeColorNames(i){
+//  writes the color names into the corresponding cell        
+         switch(i){
+         case 1:
+		 x=document.getElementById("headColor");
+		 x.innerHTML = '#' + currentColor;
+		 break;
+
+		 case 2:
+		 x=document.getElementById("linkColor");
+		 x.innerHTML =  '#' + currentColor ;
+		 break;
+
+		 case 3:
+		 x=document.getElementById("textColor");
+		 x.innerHTML = '#' + currentColor;
+		 break;
+
+		 case 4:
+		 x = document.getElementById("footerColor");
+		 x.innerHTML = '#' + currentColor;
+		 break;
+		 }
+}
+
+function useContrast(currentColor,whichdiv){
+// changes the text color in divs if dark background is being used  
+if (isDark(currentColor)){
+                        daDivs[whichdiv].style.color = '#ffffff';
+                        }
+else                    {
+                        daDivs[whichdiv].style.color = '#000000';
+                         }
+}
+
+function changeCell(n,der_div){
+// highlights the colours being used in the palette at left
+var x = document.getElementById('c' + n);
+var fl = n.charAt(0);
+if (fl == '9' || fl == 'c' || fl=='f'){x.style.border = '3px solid black';
+                                      }
+else { x.style.border = '3px solid #fc3';
+     }
+var doubleflag = false;
+if (der_div != '' && readCookie(der_div))
+                  {
+                   old_color = readCookie(der_div);
+				   the_cell  =  document.getElementById('c' + old_color);
+				   for (var j=1;j<daDivs.length;j++){
+       if ((old_color == readCookie(j)) && (j != der_div)){
+		                                                  doubleflag = true;
+													      }
+				                                     }
+					if (!doubleflag){ 
+					                  the_cell.style.border = '0px';
+					                }
+                  }
+}
+
+
+function isDark(n){
+// tests whether a dark color is being used                   
+     for (var i=0;i<dark_colors.length;i++){
+                                           if (n == dark_colors[i]){
+										                            return true;
+										                           }
+                                           }
+}
+
+function changePic(){
+//  allows the user to change the picture being used
+x = document.getElementById("pic");
+var pic_source = prompt("type the full address of the IMAGE SOURCE","");
+if ((pic_source != "") && (pic_source != null)){
+                       x.removeAttribute("src");
+                       x.setAttribute("src",pic_source);
+                       createCookie("img_src",pic_source,7);}
+else {
+      return;
+     }
+}
+
+
+function loadPrevious(){
+//  loads previously chosen paletter from the cookies
+for (var i=1;i<daDivs.length;i++){
+                      if (readCookie(i)){daDivs[i].style.backgroundColor = '#' + readCookie(i);
+					                     currentColor  = readCookie(i);
+										 changeCell(currentColor,'');
+										 writeColorNames(i);
+										 useContrast(currentColor,i);
+										 if (readCookie("img_src")){
+										                    x=document.getElementById("pic");
+														    x.removeAttribute("src");
+                                                            x.setAttribute("src",readCookie("img_src"));
+										                          }
+					                     }
+										 else { currentColor='000';}
+					              }
+}
+
+
+function createCookie(name,value,days){
+if (days)
+         {
+          var date = new Date();
+          date.setTime(date.getTime()+(days*24*60*60*1000));
+          var expires = "; expires="+date.toGMTString();
+}
+else expires = "";
+          document.cookie = name+"="+value+expires+"; path=/";
+} 
+
+function readCookie(name){
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++){
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                                         }
+          return null;
+} 
+
+function eraseCookie(name){
+           createCookie(name,"",-1);
+}
+
+
+function init(){
+//  load leftside palette get references to the divs load choices from cookies               
+				drawTable();
+				getDivs();
+				loadPrevious();
+				
+}
+
+
+//-->
+</script>
+</head>
+<body onload="init();">
+<h1>The Palette Picker</h1>
+<div id="mockpage">
+<div id="headdiv" onclick="changeColor(1);"><h2>Widgets Unlimited</h2><span id="headColor"></span>
+</div>
+<div id="linkdiv" onclick="changeColor(2);">
+           <h3>Links</h3>
+           <a href="#">link 1</a>
+		   <a href="#">link 2</a>
+		   <a href="#">link 3</a>
+		   <a href="#">link 4</a>
+		   <a href="#">link 5</a>
+		   <a href="#">link 6</a>
+		   <a href="#">link 7</a>
+		   <span id="linkColor"></span>
+    </div>
+
+<div id="textdiv" onclick="changeColor(3);">
+                   <h3>Our widgets</h3>
+
+                   <p><a href="#" title="click to change image source" onclick="changePic();"><img src="spacer2.gif"  id="pic" width="80" height="160" align="left" alt="click to change image source" border="0" /></a>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
+				   <p>Ut wisi enim ad minim veniam, quis nostrud exercitation ulliam corper suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+				   
+				   <p>Duis autem veleum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel willum lunombro dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. </p>
+                   <span id="textColor"></span>
+				   <br />
+				   
+
+</div>
+
+<div id="footerdiv" onclick="changeColor(4);">&#169; Widgets Productions 2002.  ph 555-5555 .  email  <a href="mailto:blah@hotmail.com">  blah@hotmail.com  </a><span id = "footerColor"></span></div>
+</div>
+
+<div id="notediv">Colour picker by <a href="/contact/" title="Contact Me">Duncan O'Neill</a>, 2002. Directions: 1) choose a colour from the 
+palette at left by clicking on the colour.  2) Click in the portion of the page which you want 
+to fill with that colour. 3) Fiddle until you get a scheme which you like. That scheme will be 
+saved in a javascript cookie for three days. <a href="http://validator.w3.org/check/referer" title="valid this document's markup" target="newone">Valid XHTML1.0</a>&#160;<a href="http://jigsaw.w3.org/css-validator/check/referer" title="validate this document's CSS" target="newone">Valid CSS</a>
+</div>
+</body>
+</html>
+
+
